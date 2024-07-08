@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400; /* Default weight */
+}
+
+.plus-jakarta-sans-light {
+  font-weight: 200;
+}
+
+.plus-jakarta-sans-regular {
+  font-weight: 400;
+}
+
+.plus-jakarta-sans-bold {
+  font-weight: 700;
+}
+
+
+.plus-jakarta-sans-semibold {
+    font-weight: 600;
+}
