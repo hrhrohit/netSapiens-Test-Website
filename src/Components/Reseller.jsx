@@ -74,7 +74,7 @@ const ResellerList = () => {
                   onClick={() => handleResellerClick(item.reseller)}
                 >
 
-                  <td className="py-3 px-4 font-medium">{item.reseller}</td>
+                  <td className="py-3 px-4 font-medium  hover:cursor-pointer hover:text-blue-400">{item.reseller}</td>
                   <td className="py-3 px-4">{item.description}</td>
                   <td className="py-3 px-4">{item["domains-total"]}</td>
                 </tr>
