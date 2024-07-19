@@ -5,6 +5,8 @@ import LandingPage from './Components/Landing';
 import ResellerList from './Components/Reseller';
 import DomainList from './Components/DomainList';
 import Navbar from './Components/Navbar';
+import UserStatistics from './Components/UserStatistics';
+import DomainDetails from './Components/Domain/DomainDetails';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -28,6 +30,12 @@ function App() {
         } />
         <Route path="/domains/:reseller" element={
           isAuthenticated ? <DomainList /> : <Navigate to="/login" />
+        } />
+        <Route path="/domain-details/:domain" element={
+          isAuthenticated ? <DomainDetails /> : <Navigate to="/login" />
+        } />
+        <Route path="/user-statistics" element={
+          isAuthenticated ? <UserStatistics /> : <Navigate to="/login" />
         } />
         <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
       </Routes>

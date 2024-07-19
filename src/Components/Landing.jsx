@@ -12,6 +12,9 @@ const LandingPage = () => {
           <Link to="/resellers" className="bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition duration-300 text-lg">
             Explore Resellers
           </Link>
+          <Link to="/user-statistics" className="bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition duration-300 text-lg">
+            User Statistics
+          </Link>
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 p-8 bg-white bg-opacity-10">
