@@ -16,6 +16,7 @@ const DomainList = () => {
   const [graphMetric, setGraphMetric] = useState('PBX Seats');
   const [graphPeriod, setGraphPeriod] = useState('7 DAYS');
   const [callHistoryData, setCallHistoryData] = useState([]);
+  const [selectedDomain, setSelectedDomain] = useState('');
 
   const fetchDomainDetails = useCallback(async (domain) => {
     try {
@@ -137,6 +138,7 @@ const DomainList = () => {
 
         // Fetch call history data for the first domain
         if (domainsWithDetails.length > 0) {
+          setSelectedDomain(domainsWithDetails[0].domain);
           await fetchCallHistoryData(domainsWithDetails[0].domain);
         }
       } catch (error) {
@@ -227,8 +229,22 @@ const DomainList = () => {
 
   const CallHistoryGraph = useCallback(() => (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-      <div className="bg-[#00B4FC] p-4">
+      <div className="bg-[#00B4FC] p-4 flex justify-between items-center">
         <h2 className="text-xl font-bold text-white plus-jakarta-sans-bold">Call History</h2>
+        <select 
+          value={selectedDomain} 
+          onChange={(e) => {
+            setSelectedDomain(e.target.value);
+            fetchCallHistoryData(e.target.value);
+          }}
+          className="bg-white text-[#00B4FC] rounded px-2 py-1 text-sm"
+        >
+          {domainsState.map((domain) => (
+            <option key={domain.domain} value={domain.domain}>
+              {domain.domain}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="p-4" style={{ height: '300px' }}>
         <ResponsiveContainer width="100%" height="100%">
@@ -253,7 +269,7 @@ const DomainList = () => {
         </ResponsiveContainer>
       </div>
     </div>
-  ), [callHistoryData]);
+  ), [callHistoryData, selectedDomain, domainsState, fetchCallHistoryData]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -338,9 +354,8 @@ const DomainList = () => {
         </div>
         <div className="w-full lg:w-1/2 px-4 mb-8">
           <CallHistoryGraph />
-        </div>
-      </div>
-
+        </div> 
+      </div> 
       <div className="w-full px-4 mb-8">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="bg-[#00B4FC] p-4">
